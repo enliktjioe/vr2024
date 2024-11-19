@@ -3,13 +3,6 @@ Repository for homework project of this VR course from University of Bremen, Ger
 
 Homepage: https://cgvr.cs.uni-bremen.de/teaching/vr/
 
-Team members:
-
-- Enlik Enlik
-- Sri Roopesh Grandhi
-- Vanshika Chaudhary
-
-
 ## Assignment 2
 
 Team members:
@@ -17,7 +10,7 @@ Team members:
 - Enlik Enlik
 - Vanshika Chaudhary
 
-Folder: /materials_vr
+Folder: [/materials_vr](https://github.com/enliktjioe/vr2024/tree/master/materials_vr)
 
 Video Demonstration: (via YouTube, click the image to open the link)
 
@@ -33,7 +26,7 @@ Team members:
 - Sri Roopesh Grandhi
 - Vanshika Chaudhary
 
-Project Folder: /HelloUnreal
+Project Folder: [/HelloUnreal](https://github.com/enliktjioe/vr2024/tree/master/HelloUnreal)
 
 Video Demonstration: (via YouTube, click the image to open the link)
 
