@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.3",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "vr02_lag_cpp",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
