@@ -13,12 +13,6 @@ Team members:
 
 Folder: [/assignment_03](https://github.com/enliktjioe/vr2024/tree/master/assignment_03)
 
-Video Demonstration: (via YouTube, click the image to open the link)
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/_ZNWYdfd5mE/0.jpg)](https://www.youtube.com/watch?v=_ZNWYdfd5mE)
-
-
-
 
 ## Assignment 2
 
