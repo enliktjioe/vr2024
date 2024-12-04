@@ -11,9 +11,18 @@ Team members:
 - Vanshika Chaudhary
 - Jayon K. Vinod
 
-Folder: [/assignment_03](https://github.com/enliktjioe/vr2024/tree/vr_enlik_assignment03/assignment_03)
+Project Folder (different branch): [/assignment_03/VR_cpp_LOD](https://github.com/enliktjioe/vr2024/tree/vr_enlik_assignment03/assignment_03/VR_cpp_LOD)
 
+C++ scripts:
 
+- https://github.com/enliktjioe/vr2024/blob/vr_enlik_assignment03/assignment_03/VR_cpp_LOD/Source/VR_cpp_LOD/Actor_Assignment03.cpp
+- https://github.com/enliktjioe/vr2024/blob/vr_enlik_assignment03/assignment_03/VR_cpp_LOD/Source/VR_cpp_LOD/Actor_Assignment03.h
+
+ZIP project(using UE v5.3.2): [via google drive](https://drive.google.com/file/d/1abGC71QI8izwHMUsNaCK1V7ezDF6RJnd/view?usp=sharing)
+
+Video Demonstration: (via YouTube, click the image to open the link)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/7LreWulJTx4/0.jpg)](https://www.youtube.com/watch?v=7LreWulJTx4)
 
 ## Assignment 2
 
