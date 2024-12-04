@@ -43,17 +43,6 @@ void AActor_Assignment03::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
     UpdateLOD();
-    
-    // // Check if the actor has moved since the last frame
-    // static FVector LastLocation = GetActorLocation();
-    // FVector CurrentLocation = GetActorLocation();
-
-    // if (!CurrentLocation.Equals(LastLocation, KINDA_SMALL_NUMBER))
-    // {
-    //      // Update LOD if there is significant movement
-    //      UpdateLOD();
-    //      LastLocation = CurrentLocation;
-    // }
 }
 
 void AActor_Assignment03::UpdateLOD()
@@ -106,39 +95,4 @@ void AActor_Assignment03::UpdateLOD()
     {
         MeshComponent->SetStaticMesh(LODMesh3); // Low-detail mesh
     }
-     
-    // // Get the bounds of the mesh
-    // FVector Origin, Extent;
-    // MeshComponent->GetLocalBounds(Origin, Extent);
-
-    // FVector2D ScreenPosition;
-    // APlayerController* PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
-    // if (PlayerController && PlayerController->ProjectWorldLocationToScreen(Origin, ScreenPosition))
-    // {
-    //     // FVector ScreenBounds = Extent * PlayerController->GetFOVAngle() / 90.0f; // Normalize to VR FOV
-    //     // float ScreenArea = ScreenBounds.SizeSquared(); // Approximation of screen size
-        
-    //     FVector2D ScreenSize;
-    //     UGameplayStatics::GetPlayerController(GetWorld(), 0)->ProjectWorldLocationToScreen(GetActorLocation(), ScreenSize);
-
-    //     float ScreenArea = Extent.SizeSquared(); // Approximate screen area
-    //     FVector2D ViewportSize;
-    //     GEngine->GameViewport->GetViewportSize(ViewportSize);
-
-    //     // Debugging message in OutputLog UE
-    //     UE_LOG(LogTemp, Warning, TEXT("ScreenArea: %f, LODThreshold1: %f"), ScreenArea, LODThreshold1);
-
-    //     if (ScreenArea > LODThreshold1)
-    //     {
-    //         MeshComponent->SetStaticMesh(LODMesh1); // High-detail mesh
-    //     }
-    //     else if (ScreenArea > LODThreshold2)
-    //     {
-    //         MeshComponent->SetStaticMesh(LODMesh2); // Medium-detail mesh
-    //     }
-    //     else
-    //     {
-    //         MeshComponent->SetStaticMesh(LODMesh3); // Low-detail mesh
-    //     }
-    // }
 }
