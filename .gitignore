@@ -1,0 +1,40 @@
+# Compiled binary files
+*.exe
+*.dll
+*.lib
+*.app
+*.dylib
+*.so
+*.apk
+*.xcodeproj
+*.xcworkspace
+
+# Cache files
+*.log
+*.vs
+*.suo
+*.tmp
+*.user
+*.ncb
+*.ipch
+*.opensdf
+
+# Build folders
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+
+# Temporary and backup files
+Thumbs.db
+Desktop.ini
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# Visual Studio Code
+.vscode/
+
+# Mac-specific
+.DS_Store
