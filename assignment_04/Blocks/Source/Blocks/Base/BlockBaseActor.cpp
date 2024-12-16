@@ -1,4 +1,4 @@
-// ©CGVR 2021. Author: Andre Muehlenbrock 
+// ï¿½CGVR 2021. Author: Andre Muehlenbrock 
 
 #include "BlockBaseActor.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -69,6 +69,22 @@ void ABlockBaseActor::OnOverlapBegin(class UPrimitiveComponent* Comp, class AAct
 			overlappingActors.Add((ABlockBaseActor*)OtherActor, (UBlockBaseComponent*) Comp);
 		}
 	}
+
+	// Check if the overlapping actor is a valid BlockBaseActor
+    if (ABlockBaseActor* OtherBlock = Cast<ABlockBaseActor>(OtherActor))
+    {
+        // Perform a check for proximity and orientation
+        if (CanSnapTo(OtherBlock)) 
+        {
+            // Highlight both blocks (e.g., change material color)
+            SetBlockHighlight(true, FColor::Green);
+            OtherBlock->SetBlockHighlight(true, FColor::Green);
+        }
+        else
+        {
+            SetBlockHighlight(true, FColor::Red);
+        }
+    }
 }
 
 void ABlockBaseActor::OnOverlapEnd(UPrimitiveComponent* Comp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
@@ -80,17 +96,140 @@ void ABlockBaseActor::OnOverlapEnd(UPrimitiveComponent* Comp, class AActor* Othe
 			overlappingActors.Remove((ABlockBaseActor*)OtherActor);
 		}
 	}
+
+	// For OnOverlapEnd:
+	// Reset the highlighting when blocks are no longer overlapping.
+
+	if (ABlockBaseActor* OtherBlock = Cast<ABlockBaseActor>(OtherActor))
+    {
+        SetBlockHighlight(false);  // Remove highlight
+        OtherBlock->SetBlockHighlight(false);
+    }
 }
 
+
+// ===== CUSTOM / HELPER FUNCTION =====
+// Add a helper function to set block highlighting:
+void ABlockBaseActor::SetBlockHighlight(bool bEnable, FColor HighlightColor)
+{
+    for (UBlockBaseComponent* BlockComp : BlockComponents)
+    {
+        if (bEnable)
+        {
+            BlockComp->SetCustomDepthStencilValue(1); // Enable outline/stencil
+            BlockComp->SetRenderCustomDepth(true);
+            BlockComp->SetVectorParameterValueOnMaterials("HighlightColor", HighlightColor);
+        }
+        else
+        {
+            BlockComp->SetRenderCustomDepth(false);
+        }
+    }
+}
+
+// FindClosestBlock
+// The function iterates through all actors of the ABlockBaseActor class in the current level, computes the distance to each, and identifies the closest block. Here's the implementation:
+ABlockBaseActor* ABlockBaseActor::FindClosestBlock()
+{
+    ABlockBaseActor* ClosestBlock = nullptr;
+    float MinDistance = FLT_MAX; // Start with a very large distance
+
+    // Get the world context
+    UWorld* World = GetWorld();
+    if (!World) return nullptr;
+
+    // Iterate through all actors of type ABlockBaseActor in the world
+    for (TActorIterator<ABlockBaseActor> It(World); It; ++It)
+    {
+        ABlockBaseActor* OtherBlock = *It;
+
+        // Skip self to avoid checking against itself
+        if (OtherBlock == this) 
+            continue;
+
+        // Calculate the distance between this block and the other block
+        float Distance = FVector::Dist(this->GetActorLocation(), OtherBlock->GetActorLocation());
+
+        // Update the closest block if a smaller distance is found
+        if (Distance < MinDistance)
+        {
+            MinDistance = Distance;
+            ClosestBlock = OtherBlock;
+        }
+    }
+
+    // Log the result (optional, for debugging)
+    if (ClosestBlock)
+    {
+        UE_LOG(LogTemp, Log, TEXT("Closest block to %s is %s at distance: %f"), 
+            *GetName(), *ClosestBlock->GetName(), MinDistance);
+    }
+
+    return ClosestBlock;
+}
+
+// Snapping Logic
+// Implement a CanSnapTo function to determine if blocks are close enough to merge:
+bool ABlockBaseActor::CanSnapTo(ABlockBaseActor* OtherBlock)
+{
+    const float PositionThreshold = 10.0f;  // Position tolerance
+    const float OrientationThreshold = 5.0f;  // Orientation tolerance (degrees)
+
+    FVector DeltaPosition = GetActorLocation() - OtherBlock->GetActorLocation();
+    FRotator DeltaRotation = GetActorRotation() - OtherBlock->GetActorRotation();
+
+    return DeltaPosition.Size() < PositionThreshold 
+           && FMath::Abs(DeltaRotation.Pitch) < OrientationThreshold 
+           && FMath::Abs(DeltaRotation.Yaw) < OrientationThreshold
+           && FMath::Abs(DeltaRotation.Roll) < OrientationThreshold;
+}
+
+
+// ===== CUSTOM / HELPER FUNCTION =====
+
+
+// Pickup_Implementation: Highlight the block immediately when picked up.
 void ABlockBaseActor::Pickup_Implementation(USceneComponent* AttachTo)
 {
-	K2_GetRootComponent()->K2_AttachToComponent(AttachTo, FName("None"), EAttachmentRule::KeepWorld, EAttachmentRule::KeepWorld, EAttachmentRule::KeepWorld, false);
+	// K2_GetRootComponent()->K2_AttachToComponent(AttachTo, FName("None"), EAttachmentRule::KeepWorld, EAttachmentRule::KeepWorld, EAttachmentRule::KeepWorld, false); // Old codes
+
+	// Call the parent class implementation (if any logic exists there)
+    Super::Pickup_Implementation();
+
+    // Enable visual highlighting to indicate the block is picked
+    SetBlockHighlight(true, FColor::Yellow); // Use yellow for "selected"
+
+    // Optional: Log or debug to confirm pickup
+    UE_LOG(LogTemp, Log, TEXT("Block %s has been picked up."), *GetName());
+
+    // Ensure the block is movable while being picked up
+    UPrimitiveComponent* RootComp = Cast<UPrimitiveComponent>(GetRootComponent());
+    if (RootComp)
+    {
+        RootComp->SetSimulatePhysics(false); // Disable physics during pickup
+        RootComp->SetMobility(EComponentMobility::Movable);
+    }
+
 }
 
 
+// Drop_Implementation: Trigger a merge and snapping logic if the block is close enough to another.
 void ABlockBaseActor::Drop_Implementation()
 {
-	K2_DetachFromActor(EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld);
+	// K2_DetachFromActor(EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld, EDetachmentRule::KeepWorld); // Old codes
+
+	ABlockBaseActor* ClosestBlock = FindClosestBlock(); // Custom function to get nearby blocks
+    if (ClosestBlock && CanSnapTo(ClosestBlock))
+    {
+        // Snap and merge
+        mergeTo(ClosestBlock);
+    }
+    else
+    {
+        // Drop normally
+        Super::Drop_Implementation();
+    }
+
 }
 
 VoxelVolume ABlockBaseActor::currentVolume() {
