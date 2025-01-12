@@ -3,8 +3,6 @@ Repository for homework project of this VR course from University of Bremen, Ger
 
 Homepage: https://cgvr.cs.uni-bremen.de/teaching/vr/
 
-
-
 ## Assignment 4
 
 Team members:
@@ -12,6 +10,8 @@ Team members:
 - Enlik Enlik
 - Vanshika Chaudhary
 - Jayon K. Vinod
+
+
 
 **Folder for Assignment 04: (different branch)**
 
