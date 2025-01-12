@@ -3,6 +3,40 @@ Repository for homework project of this VR course from University of Bremen, Ger
 
 Homepage: https://cgvr.cs.uni-bremen.de/teaching/vr/
 
+
+
+## Assignment 4
+
+Team members:
+
+- Enlik Enlik
+- Vanshika Chaudhary
+- Jayon K. Vinod
+
+**Folder for Assignment 04: (different branch)**
+
+https://github.com/enliktjioe/vr2024/tree/vr_jayon_assignment_4/jkv-4/Blocks
+
+**Video Demonstration:**
+
+https://youtu.be/xiaR4d8HGAo
+
+<img src="img/README/image-20250112220103467.png" alt="image-20250112220103467" style="zoom: 50%;" />
+
+**C++ scripts: (Added Ghost Mesh for object highlighting)**
+
+- https://github.com/enliktjioe/vr2024/blob/vr_jayon_assignment_4/jkv-4/Blocks/Source/Blocks/Base/BlockBaseActor.cpp
+- https://github.com/enliktjioe/vr2024/blob/vr_jayon_assignment_4/jkv-4/Blocks/Source/Blocks/Base/BlockBaseActor.h
+
+- https://github.com/enliktjioe/vr2024/blob/vr_jayon_assignment_4/jkv-4/Blocks/Source/Blocks/Blocks/Block1x4Actor.h
+- https://github.com/enliktjioe/vr2024/blob/vr_jayon_assignment_4/jkv-4/Blocks/Source/Blocks/Blocks/Block2x2Actor.h
+
+**Project zip file: (using UE v5.3.2)**
+
+https://drive.google.com/file/d/1xHE_n9rZPIStIpkFCaMEKP9cOYAEAuYK/view?usp=drive_link
+
+
+
 ## Assignment 3
 
 Team members:
