@@ -49,69 +49,77 @@ void ABlockBaseActor::BeginPlay()
 
 void ABlockBaseActor::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
+    Super::Tick(DeltaTime);
 
-	// Make a local copy of overlappingActors to safely iterate
-	TMap<ABlockBaseActor*, UBlockBaseComponent*> overlappingCopy = overlappingActors;
+    // Make a local copy of overlappingActors to safely iterate
+    TMap<ABlockBaseActor*, UBlockBaseComponent*> overlappingCopy = overlappingActors;
 
-	// Reset potential merge target each frame
-	PotentialMergeTarget = nullptr;
+    // Reset potential merge target each frame
+    PotentialMergeTarget = nullptr;
 
-	// Iterate over all overlapping candidates
-	for (auto& Elem : overlappingCopy)
-	{
-		ABlockBaseActor* candidate = Elem.Key;
+    // Iterate over all overlapping candidates
+    for (auto& Elem : overlappingCopy)
+    {
+        ABlockBaseActor* candidate = Elem.Key;
 
-		// If this block can merge with 'candidate', set it as our target
-		if (isMergableTo(candidate))
-		{
-			// If you wanted additional volume checks, you could do that here
-			// Example: if (getVoxelDimensionVolume() >= candidate->getVoxelDimensionVolume()) { ... }
+        // If this block can merge with 'candidate', set it as our target
+        if (isMergableTo(candidate))
+        {
+            PotentialMergeTarget = candidate;
+            break; // Found a valid target, no need to search further
+        }
+    }
 
-			PotentialMergeTarget = candidate;
-			break; // Found a valid target, no need to search further
-		}
+    // If a merge target is found, handle ghost preview and snapping logic
+    if (PotentialMergeTarget && isMergableTo(PotentialMergeTarget))
+    {
+        // Calculate the ghost transform
+        FTransform ghostTransform = getBlockTransformRelativeTo(PotentialMergeTarget);
+        FTransform finalGhostTransform = ghostTransform * PotentialMergeTarget->GetActorTransform();
 
-	
-		/*
-		if (getVoxelDimensionVolume() >= candidate->getVoxelDimensionVolume())
-		{
-			// Debugging examples:
-			// currentVolume().debugDraw(GetWorld(), GetTransform(), 0.15f);
-			// candidate->currentVolume().debugDraw(GetWorld(), candidate->getBlockTransformRelativeTo(this, Elem.Value) * GetTransform(), 0.15f);
+        // Show the ghost mesh at the calculated position
+        GhostMesh->SetVisibility(true);
+        GhostMesh->SetWorldTransform(finalGhostTransform);
 
-			// if (candidate->mergeTo(this)) {
-			//    // If you want to handle something after merging, place it here
-			// }
-		}
-		*/
-	}
+        // Start the snapping timer
+        if (!bIsSnapping)
+        {
+            SnapTimer += DeltaTime;
 
-	// Show or hide the ghost mesh based on PotentialMergeTarget
-	if (PotentialMergeTarget && isMergableTo(PotentialMergeTarget))
-	{
-		// Calculate how this block would snap to the target
-		FTransform ghostTransform = getBlockTransformRelativeTo(PotentialMergeTarget);
+            // If the timer exceeds 0.5 seconds, perform the snap
+            if (SnapTimer >= 3.0f) // Adjust the delay as needed
+            {
+                bIsSnapping = true; // Prevent multiple snaps in one Tick
+                if (mergeTo(PotentialMergeTarget))
+                {
+                    // Hide the ghost mesh after snapping
+                    GhostMesh->SetVisibility(false);
 
-		// (Optional) Apply any rotation index here:
-		/*
-		FRotator additionalRot(0, RotationIndex * 90, 0);
-		ghostTransform.ConcatenateRotation(additionalRot.Quaternion());
-		*/
+                    // Clear the merge target to avoid repeated snapping
+                    PotentialMergeTarget = nullptr;
 
-		// Convert local transform to world space
-		FTransform finalGhostTransform = ghostTransform * PotentialMergeTarget->GetActorTransform();
+                    // Reset the timer and snapping state
+                    SnapTimer = 0.0f;
+                    bIsSnapping = false;
 
-		// Make the ghost visible and position it at the final transform
-		GhostMesh->SetVisibility(true);
-		GhostMesh->SetWorldTransform(finalGhostTransform);
-	}
-	else
-	{
-		// If no valid target, hide the ghost
-		GhostMesh->SetVisibility(false);
-	}
+                    // Exit the Tick function early
+                    return;
+                }
+            }
+        }
+    }
+    else
+    {
+        // Hide the ghost if no valid target
+        GhostMesh->SetVisibility(false);
+
+        // Reset the timer and snapping state
+        SnapTimer = 0.0f;
+        bIsSnapping = false;S
+    }
 }
+
+
 
 
 void ABlockBaseActor::OnOverlapBegin(class UPrimitiveComponent* Comp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -364,4 +372,8 @@ bool ABlockBaseActor::mergeTo(ABlockBaseActor* actor) {
 
 	return true;
 }
+
+
+
+
 

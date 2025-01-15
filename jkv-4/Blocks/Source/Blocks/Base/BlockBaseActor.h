@@ -47,7 +47,13 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Ghost")
     int32 RotationIndex = 0; // Will track 0..3 for 90-degree increments
 
-	
+
+	UPROPERTY()
+    float SnapTimer = 0.0f; // Time elapsed since ghost appeared
+
+    UPROPERTY()
+    bool bIsSnapping = false; // Indicates whether snapping is in progress
+
 
 	/* Stores the overlapping actors temporary, can be used for highlighting */
 	TMap<ABlockBaseActor*, UBlockBaseComponent*> overlappingActors;
