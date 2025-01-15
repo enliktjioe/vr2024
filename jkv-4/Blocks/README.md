@@ -3,6 +3,8 @@ Repository for homework project of this VR course from University of Bremen, Ger
 
 Homepage: https://cgvr.cs.uni-bremen.de/teaching/vr/
 
+
+
 ## Assignment 4
 
 Team members:
@@ -11,17 +13,21 @@ Team members:
 - Vanshika Chaudhary
 - Jayon K. Vinod
 
-
-
 **Folder for Assignment 04: (different branch)**
 
 https://github.com/enliktjioe/vr2024/tree/vr_jayon_assignment_4/jkv-4/Blocks
 
-**Video Demonstration:**
+**Video Demonstration:** (via YouTube, click the image to open the link)
 
-https://youtu.be/xiaR4d8HGAo
+Latest Version (Block Highlighting + Fixing Snap)
 
-<img src="img/README/image-20250112220103467.png" alt="image-20250112220103467" style="zoom: 50%;" />
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/yuty32KF5RE/0.jpg)](https://www.youtube.com/watch?v=yuty32KF5RE)
+
+Initial Version (Block Highlighting)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/xiaR4d8HGAo/0.jpg)](https://www.youtube.com/watch?v=xiaR4d8HGAo)
+
+
 
 **C++ scripts: (Added Ghost Mesh for object highlighting)**
 
@@ -30,10 +36,13 @@ https://youtu.be/xiaR4d8HGAo
 
 - https://github.com/enliktjioe/vr2024/blob/vr_jayon_assignment_4/jkv-4/Blocks/Source/Blocks/Blocks/Block1x4Actor.h
 - https://github.com/enliktjioe/vr2024/blob/vr_jayon_assignment_4/jkv-4/Blocks/Source/Blocks/Blocks/Block2x2Actor.h
+- https://github.com/enliktjioe/vr2024/blob/vr_jayon_assignment_4/jkv-4/Blocks/Source/Blocks/VRPlayerPawn.cpp
+- https://github.com/enliktjioe/vr2024/blob/vr_jayon_assignment_4/jkv-4/Blocks/Source/Blocks/VRPlayerPawn.h
 
 **Project zip file: (using UE v5.3.2)**
 
-https://drive.google.com/file/d/1xHE_n9rZPIStIpkFCaMEKP9cOYAEAuYK/view?usp=drive_link
+- **Latest (15 jan) -** [With Ghost Snap.zip](https://drive.google.com/file/d/1eK_qI2eTrkxbOYPPbE7qMCDRHCWe23W1/view?usp=sharing)
+- **First version -** [Blocks_Assignment04.zip](https://drive.google.com/file/d/1xHE_n9rZPIStIpkFCaMEKP9cOYAEAuYK/view?usp=drive_link)
 
 
 
