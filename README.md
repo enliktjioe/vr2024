@@ -17,11 +17,17 @@ Team members:
 
 https://github.com/enliktjioe/vr2024/tree/vr_jayon_assignment_4/jkv-4/Blocks
 
-**Video Demonstration:**
+**Video Demonstration:** (via YouTube, click the image to open the link)
 
-https://youtu.be/xiaR4d8HGAo
+Latest Version (Block Highlighting + Fixing Snap)
 
-<img src="img/README/image-20250112220103467.png" alt="image-20250112220103467" style="zoom: 50%;" />
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/yuty32KF5RE/0.jpg)](https://www.youtube.com/watch?v=yuty32KF5RE)
+
+Initial Version (Block Highlighting)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/xiaR4d8HGAo/0.jpg)](https://www.youtube.com/watch?v=xiaR4d8HGAo)
+
+
 
 **C++ scripts: (Added Ghost Mesh for object highlighting)**
 
