@@ -1,0 +1,24 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#include "spring_mass.h"
+#include "Spring.h"
+
+Spring::Spring(MassPoint* m1, MassPoint* m2, float length) :
+m_m1(m1), m_m2(m2), 
+m_spring_length_init(length),
+m_stiffness(0.1),
+m_damper(0.001)
+{
+}
+
+Spring::~Spring()
+{
+}
+
+
+void
+Spring::Tick()
+{
+	//m_m1->m_currPos.Normalize()
+	//FVector::Dist()
+}
