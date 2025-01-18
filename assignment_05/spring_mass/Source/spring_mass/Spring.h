@@ -17,6 +17,9 @@ protected:
 	// length of the springs
 	float m_spring_length_init;
 
+	// Rest length of the spring
+	float m_restLength;
+
 	float m_stiffness;
 	float m_damper;
 
