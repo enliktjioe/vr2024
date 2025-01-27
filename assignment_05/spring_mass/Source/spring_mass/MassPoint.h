@@ -14,6 +14,7 @@ protected:
 	uint32 m_vertex_id;
 	// current position in local coordinate system
 	FVector m_currPos;
+	FVector m_prevPos; // store the previous position
 	// current mass-spring system state
 	FVector m_force, m_velocity;
 
@@ -21,6 +22,7 @@ protected:
 	bool m_movable;
 	// mass parameter
 	float m_mass;
+
 
 public:
 	MassPoint(uint32 vertex_id, bool movable, FVector pos);
