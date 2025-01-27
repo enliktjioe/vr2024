@@ -4,6 +4,33 @@ Repository for homework project of this VR course from University of Bremen, Ger
 Homepage: https://cgvr.cs.uni-bremen.de/teaching/vr/
 
 
+## Assignment 5
+
+Team members:
+
+- Enlik Enlik
+- Vanshika Chaudhary
+- Jayon K. Vinod
+
+**Folder for Assignment 05:**
+
+https://github.com/enliktjioe/vr2024/tree/master/assignment_05/spring_mass
+
+**Video Demonstration:** (via YouTube, click the image to open the link)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wijIHDVNhgM/0.jpg)](https://www.youtube.com/watch?v=wijIHDVNhgM)
+
+
+**C++ scripts: (Added Ghost Mesh for object highlighting)**
+
+- https://github.com/enliktjioe/vr2024/blob/master/assignment_05/spring_mass/Source/spring_mass/Spring.cpp
+- https://github.com/enliktjioe/vr2024/blob/master/assignment_05/spring_mass/Source/spring_mass/MassPoint.cpp
+
+
+**Project zip file: (using UE v5.3.2)**
+[20250127_spring_mass_enlik.zip](https://drive.google.com/file/d/1SZatFVdsjQtsW5Rq9-W1eOAqvxw2RvFT/view?usp=sharing)
+
+
 
 ## Assignment 4
 
