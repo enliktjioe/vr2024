@@ -20,11 +20,15 @@ https://github.com/enliktjioe/vr2024/tree/master/assignment_05/spring_mass
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wijIHDVNhgM/0.jpg)](https://www.youtube.com/watch?v=wijIHDVNhgM)
 
+**C++ scripts:**
 
-**C++ scripts: (Added Ghost Mesh for object highlighting)**
+- [Spring.cpp](https://github.com/enliktjioe/vr2024/blob/master/assignment_05/spring_mass/Source/spring_mass/Spring.cpp)
+  - Implement the force calculation for each spring
+    [commit link](https://github.com/enliktjioe/vr2024/commit/9db78d5674605cf9dd2c66a36f166eef1c883454)
 
-- https://github.com/enliktjioe/vr2024/blob/master/assignment_05/spring_mass/Source/spring_mass/Spring.cpp
-- https://github.com/enliktjioe/vr2024/blob/master/assignment_05/spring_mass/Source/spring_mass/MassPoint.cpp
+- [MassPoint.cpp](https://github.com/enliktjioe/vr2024/blob/master/assignment_05/spring_mass/Source/spring_mass/MassPoint.cpp) and [MassPoint.h](https://github.com/enliktjioe/vr2024/blob/master/assignment_05/spring_mass/Source/spring_mass/MassPoint.h)
+  - Implement gravitational force and perturbed gravitation factor; used Verlet method for updateCurPos function
+    [commit link](https://github.com/enliktjioe/vr2024/commit/0a89a712f3fecc9c894ec5548fafd31e7ff475dd)
 
 
 **Project zip file: (using UE v5.3.2)**
