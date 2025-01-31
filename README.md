@@ -3,6 +3,18 @@ Repository for homework project of this VR course from University of Bremen, Ger
 
 Homepage: https://cgvr.cs.uni-bremen.de/teaching/vr/
 
+## Locomotion Metaphor with Trackpad or Thumbstick Controller
+
+Project Folder (different branch):
+
+https://github.com/enliktjioe/vr2024/tree/IDM_VR_Project/IDM_VR_Project/VR_Locomotion
+
+
+Video Demonstration: (via YouTube, click the image to open the link)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/mCEFvOQ1nWQ/0.jpg)](https://www.youtube.com/watch?v=mCEFvOQ1nWQ)
+
+
 
 ## Assignment 5
 
