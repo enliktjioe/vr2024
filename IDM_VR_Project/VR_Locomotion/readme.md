@@ -2,9 +2,11 @@
 
 
 Deleted part:
+
 ![](img/IA_Move.png)
 
-Updated IMC_Default
+Updated IMC_Default:
+
 ![](img/IMC_Default.png)
 
 
